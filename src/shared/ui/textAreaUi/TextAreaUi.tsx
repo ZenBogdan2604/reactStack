@@ -1,9 +1,16 @@
+import { TextareaHTMLAttributes } from 'react'
 import s from './text-area.module.scss'
 
-export const TextAreaUi = () => {
+interface TextAreaUiProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label?: string
+  error?: boolean
+  placeholder?: string
+}
+
+export const TextAreaUi = ({ label, error, placeholder, ...props }: TextAreaUiProps) => {
   return (
     <div>
-      <input type="text" className={s.TextArea} />
+      <textarea className={s.text_Area} placeholder={placeholder} {...props} />
     </div>
   )
 }

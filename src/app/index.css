@@ -25,6 +25,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -65,4 +66,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.linkStyle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: rgb(182, 205, 211);
+  width: 25rem;
+  height: 3.125rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  visibility: hidden;
+}
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+hr{
+  width: 40rem;
 }
