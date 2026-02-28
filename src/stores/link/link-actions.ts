@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { ICreateLinkResponse, IGetLinkResponse } from './types'
+import { PATH_API } from '@/shared/consts'
 
 class LinkActionsStore {
   constructor() { makeAutoObservable(this) }
@@ -8,10 +9,11 @@ class LinkActionsStore {
   link = ""
   id = ""
 
+
   createLinkAction = async (password: string) => {
     try {
       const body = JSON.stringify({ password })
-      const res = await fetch("http://localhost:8080/api/links", {
+      const res = await fetch(`${PATH_API}/links`, {
         method: "POST",
         body
       })
@@ -29,13 +31,12 @@ class LinkActionsStore {
       } else {
         console.error("Неизвестная ошибка:", error)
       }
-
     }
   }
 
   getLinkAction = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/api/links/${this.id}`)
+      const res = await fetch(`${PATH_API}/links/${this.id}`)
 
       console.log("from getLinkAction", res.ok)
       if (!res.ok) {
@@ -48,7 +49,6 @@ class LinkActionsStore {
       console.error("ERROR CREATE LINK ACTION", error)
     }
   }
-
 }
 
 export const linkActionsStore = new LinkActionsStore()

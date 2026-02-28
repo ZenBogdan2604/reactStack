@@ -1,35 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { MessageInput } from '@/features/message-input/ui/MessageInput'
-
-import { LinkPage } from '@/features/link/ui/LinkPage'
-import { ClipBoard } from '@/shared/assets/icons/ClipBoard'
-import { DescriptionUi } from '@/shared/ui/descriptionUi/DescriptionUi'
-import { LinkTextUi } from '@/shared/ui/linkTextUi/LinkTextUi'
-import { TextUi } from '@/shared/ui/textUi/TextUi'
+import { LinkPage } from "@/pages/linkPage/LinkPage";
+import { Layout } from "./Layout";
+import { HomePage } from "@/pages/homePage/HomePage";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div className='main'>
-              <TextUi />
-              <MessageInput />
-              <div className='linkStyle'>
-                <LinkTextUi />
-                <ClipBoard />
-              </div>
-              <DescriptionUi />
-              <hr />
-            </div>
-          }
-        />
-
-        <Route path="/:id" element={<LinkPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/:id" element={<LinkPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
