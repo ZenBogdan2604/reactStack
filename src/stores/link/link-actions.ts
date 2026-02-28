@@ -24,7 +24,12 @@ class LinkActionsStore {
       this.id = result.id
       console.log(result)
     } catch (error) {
-      console.error("ERROR CREATE LINK ACTION", error)
+      if (error instanceof Error) {
+        console.error("createLinkAction", error.message)
+      } else {
+        console.error("Неизвестная ошибка:", error)
+      }
+
     }
   }
 
