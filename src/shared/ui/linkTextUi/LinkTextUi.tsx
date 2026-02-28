@@ -1,10 +1,20 @@
-import { linkActionsStore } from '@/stores'
-import s from './link-text.module.scss'
+import { linkActionsStore } from "@/stores";
+import s from "./link-text.module.scss";
+import { Link } from "react-router-dom";
 
-export const LinkTextUi = () => {
-  const { id } = linkActionsStore
-  const link = "http://localhost:5173/" + id
-  return (
-    <a className={s.link} href={link}>{!id ? "Здесь должна быть ваша ссылка!" : link}</a>
-  )
+interface LinkTextUiProps {
+  text?: string;
 }
+
+export const LinkTextUi = ({
+  text = "Здесь должна быть ваша ссылка!",
+}: LinkTextUiProps) => {
+  const { id } = linkActionsStore;
+  const link = "http://localhost:5173/" + id;
+
+  return (
+    <Link className={s.link} to={link}>
+      {!id ? text : link}
+    </Link>
+  );
+};
